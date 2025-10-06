@@ -43,6 +43,61 @@ All colors MUST be HSL.
   --sidebar-accent-foreground: 240 5.9% 10%;
   --sidebar-border: 220 13% 91%;
   --sidebar-ring: 217.2 91.2% 59.8%;
+
+  /* Windows 11 Brand Colors */
+  --windows-blue: 210 100% 53%;
+  --windows-blue-light: 210 100% 80%;
+  --windows-blue-dark: 210 100% 40%;
+
+  /* System Colors */
+  --windows-accent: 210 100% 53%;
+  --windows-accent-light: 210 100% 80%;
+  --windows-accent-dark: 210 100% 40%;
+
+  /* Surface Colors */
+  --windows-surface: 0 0% 98%;
+  --windows-surface-secondary: 0 0% 95%;
+  --windows-surface-tertiary: 0 0% 92%;
+  --windows-card: 0 0% 100%;
+  --windows-overlay: 0 0% 100% / 0.9;
+
+  /* Text Colors */
+  --windows-text-primary: 0 0% 13%;
+  --windows-text-secondary: 0 0% 33%;
+  --windows-text-tertiary: 0 0% 53%;
+  --windows-text-on-accent: 0 0% 100%;
+
+  /* Border and Divider */
+  --windows-stroke: 0 0% 87%;
+  --windows-stroke-secondary: 0 0% 82%;
+
+  /* Fluent Design Effects */
+  --blur-backdrop: blur(60px);
+  --blur-surface: blur(30px);
+
+  /* Corner Radius */
+  --corner-radius: 8px;
+  --corner-radius-small: 4px;
+  --corner-radius-large: 12px;
+
+  /* Shadows */
+  --shadow-1: 0 1px 3px hsl(0 0% 0% / 0.1);
+  --shadow-2: 0 4px 12px hsl(0 0% 0% / 0.15);
+  --shadow-3: 0 8px 32px hsl(0 0% 0% / 0.15);
+  --shadow-flyout: 0 8px 32px hsl(0 0% 0% / 0.18);
+
+  /* Animation Durations */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 350ms;
+
+  /* Z-index layers */
+  --z-desktop: 1;
+  --z-window: 10;
+  --z-taskbar: 100;
+  --z-startmenu: 200;
+  --z-notification: 300;
+  --z-modal: 400;
 }
 
 .dark {
@@ -81,6 +136,20 @@ All colors MUST be HSL.
   --sidebar-accent-foreground: 240 4.8% 95.9%;
   --sidebar-border: 240 3.7% 15.9%;
   --sidebar-ring: 217.2 91.2% 59.8%;
+
+  /* Dark theme Windows 11 overrides */
+  --windows-surface: 210 11% 15%;
+  --windows-surface-secondary: 210 11% 12%;
+  --windows-surface-tertiary: 210 11% 18%;
+  --windows-card: 210 11% 17%;
+  --windows-overlay: 210 11% 17% / 0.9;
+
+  --windows-text-primary: 0 0% 95%;
+  --windows-text-secondary: 0 0% 82%;
+  --windows-text-tertiary: 0 0% 70%;
+
+  --windows-stroke: 210 11% 25%;
+  --windows-stroke-secondary: 210 11% 30%;
 }
 
 @theme {
@@ -160,4 +229,116 @@ All colors MUST be HSL.
 body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
+  font-family: 'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  overflow: hidden;
+}
+
+/* Fluent Design Acrylic Effect */
+.acrylic {
+  backdrop-filter: var(--blur-backdrop);
+  -webkit-backdrop-filter: var(--blur-backdrop);
+  background: hsl(var(--windows-overlay));
+  border: 1px solid hsl(var(--windows-stroke));
+}
+
+.acrylic-strong {
+  backdrop-filter: var(--blur-surface);
+  -webkit-backdrop-filter: var(--blur-surface);
+  background: hsl(var(--windows-card) / 0.8);
+  border: 1px solid hsl(var(--windows-stroke));
+}
+
+/* Windows 11 Typography Scale */
+.text-caption {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+}
+
+.text-body {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+}
+
+.text-body-strong {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+}
+
+.text-subtitle {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+}
+
+.text-title {
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 600;
+}
+
+/* Windows 11 UI Components Base Styles */
+.windows-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: var(--corner-radius-small);
+  border: 1px solid hsl(var(--windows-stroke));
+  background: hsl(var(--windows-card));
+  color: hsl(var(--windows-text-primary));
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all var(--duration-fast) ease-out;
+  outline: none;
+}
+
+.windows-button:hover {
+  background: hsl(var(--windows-surface-secondary));
+  border-color: hsl(var(--windows-stroke-secondary));
+}
+
+.windows-button:active {
+  transform: translateY(1px);
+}
+
+.windows-button.accent {
+  background: hsl(var(--windows-accent));
+  color: hsl(var(--windows-text-on-accent));
+  border-color: hsl(var(--windows-accent));
+}
+
+.windows-button.accent:hover {
+  background: hsl(var(--windows-accent-light));
+  border-color: hsl(var(--windows-accent-light));
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--windows-surface));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--windows-text-tertiary));
+  border-radius: 6px;
+  border: 2px solid hsl(var(--windows-surface));
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--windows-text-secondary));
+}
+
+/* Selection styling */
+::selection {
+  background: hsl(var(--windows-accent) / 0.3);
+  color: hsl(var(--windows-text-primary));
 }

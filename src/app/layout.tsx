@@ -18,8 +18,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Elegant Flora Boutique",
-  description: "Beautiful AI-powered website creation platform",
+  title: "Windows 11 MVP",
+  description: "A comprehensive Windows 11 desktop environment simulation with authentic Fluent Design principles",
 };
 
 export default function RootLayout({
